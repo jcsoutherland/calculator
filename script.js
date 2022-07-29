@@ -43,7 +43,10 @@ const buttonClickHandler = (e) => {
         screenText.innerHTML = 'INVALID INPUT'
       } else if (inputArray.length === 2) {
         inputArray.push(screenText.innerHTML)
-        let result = solveInput(inputArray).toFixed(2).toString()
+        let result = solveInput(inputArray)
+          .toFixed(2)
+          .replace(/[.,]00$/, '')
+          .toString()
         screenText.innerHTML = `${result} ${btnID}`
         inputArray = [result, btnID]
         result = 0
@@ -74,7 +77,10 @@ const buttonClickHandler = (e) => {
   if (btnID === '=') {
     if (!operationArray.includes(screenText.innerHTML)) {
       inputArray.push(screenText.innerHTML)
-      let result = solveInput(inputArray).toFixed(2).toString()
+      let result = solveInput(inputArray)
+        .toFixed(2)
+        .replace(/[.,]00$/, '')
+        .toString()
       screenText.innerHTML = result
       inputArray = []
       result = 0
